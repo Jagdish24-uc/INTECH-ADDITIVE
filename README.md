@@ -342,14 +342,6 @@ While the greedy approach often works for standard coin systems (like US coins),
   - Guarantees an optimal solution for any coin system.
   - Requires more computational resources and might be overkill for simple coin systems.
 
-### Summary:
-
-- Use the greedy algorithm for simplicity and efficiency in scenarios where it provides a satisfactory solution.
-- Resort to dynamic programming for a guaranteed optimal solution in more complex scenarios.
-
-In the context of the coin change problem, the choice between the greedy algorithm and dynamic programming depends on the specific requirements and characteristics of the coin system you are dealing with.
-
-
 ### f) What is dot product and cross product? Explain use cases of where dot product is used and cross product is used in a graphics environment. Add links to places where you studied this information and get back with the understanding.
 
  Dot Product:
