@@ -119,7 +119,7 @@ class LinkedList {
 
 
 
-c) Stack minimum- Details of stack data structure is available in
+### c) Stack minimum- Details of stack data structure is available in
 https://www.geeksforgeeks.org/stack-data-structure/
 Stack has functions of push and pop. Can you also add a function ‘min’ to the stack and it
 should also execute in O(1).
@@ -196,7 +196,7 @@ class MinStack {
     }
 }
 
-Bonus 1 –
+#### Bonus 1 –
 Explain one real world use case where stack is better used data structure than arrays.
 ANS:
 
@@ -208,7 +208,7 @@ Array: Arrays have a fixed size that needs to be defined in advance. If the arra
 
 
 
-d) Given an array of integers representing the elevation of a roof structure at
+### d) Given an array of integers representing the elevation of a roof structure at
 various positions, each position is separated by a unit length, Write a program
 to determine the amount of water that will be trapped on the roof after heavy
 rainfall
@@ -232,7 +232,7 @@ ANS:
 
 
 
-e) You are given a list of coin denominations that you can use to tender change to your customers. The goal is to find the most optimum way to tender the exact change to your customers, where "optimum" means using the least number of coins. For a given set of available coins and a specific amount of change to be given, provide a solution that minimizes the number of coins used.
+### e) You are given a list of coin denominations that you can use to tender change to your customers. The goal is to find the most optimum way to tender the exact change to your customers, where "optimum" means using the least number of coins. For a given set of available coins and a specific amount of change to be given, provide a solution that minimizes the number of coins used.
 
 Example:
 
@@ -362,7 +362,7 @@ Comparison:
   - Requires more computational resources and might be overkill for simple coin systems.
 
 
-f) What is dot product and cross product? Explain use cases of where dot product is used and cross product is used in a graphics environment. Add links to places where you studied this information and get back with the understanding.
+### f) What is dot product and cross product? Explain use cases of where dot product is used and cross product is used in a graphics environment. Add links to places where you studied this information and get back with the understanding.
 
  Dot Product:
 
