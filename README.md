@@ -412,7 +412,7 @@ Use Cases in Graphics:
 Resources:
 - [Khan Academy - Cross Product](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/defining-the-cross-product)
 
-g) Explain a piece of code that you wrote which you are proud of? If you have not written any code, please write your favorite subject in engineering studies. We can go deep into that subject.
+### g) Explain a piece of code that you wrote which you are proud of? If you have not written any code, please write your favorite subject in engineering studies. We can go deep into that subject.
 
 
 Implementation of the traffic light sequence, particularly how each color (red, yellow, green) is controlled with delays and loops. It involves controlling hardware like a microcontroller. Writing code for embedded systems often requires a good understanding of both software and hardware aspects.
@@ -486,7 +486,7 @@ TARGET:
 
 The delay routine is crucial for creating time delays in the traffic light sequence. It utilizes Timer 0 to generate precise delays, and the use of R6 and R0 as loop counters.
 
-h) Random crashes – you are given a source code to test and it randomly crashes and it never
+### h) Random crashes – you are given a source code to test and it randomly crashes and it never
 crashes in the same place ( you have attached a debugger and you find this). Explain what
 all you would suspect and how would you go about with isolating the cause.
 
