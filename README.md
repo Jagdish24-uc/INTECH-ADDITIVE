@@ -253,114 +253,101 @@ Output:
 
 
 
- Greedy Algorithm:
+
+
+### Greedy Algorithm:
 
 A greedy algorithm is an algorithmic paradigm that follows the problem-solving heuristic of making the locally optimal choice at each stage with the hope of finding a global optimum. In the context of the coin change problem:
 
-1. Sort the coins in descending order:
+1. **Sort the coins in descending order:**
    - Start by sorting the available coins in descending order. This ensures that you always try to use the largest possible coin first.
 
-2. Iterate through the sorted coins:
+2. **Iterate through the sorted coins:**
    - Begin with the largest coin and continue iterating through the sorted coins.
-   - At each iteration, use as many of the current coin denominations as possible while still keeping the total less than or equal to the target amount.
+   - At each iteration, use as many of the current coin denomination as possible while still keeping the total less than or equal to the target amount.
 
-3. Repeat until the target amount is zero:
+3. **Repeat until the target amount is zero:**
    - Continue this process until the target amount becomes zero.
 
-Greedy Approach Example:
+**Greedy Approach Example:**
 
-- Available coins: [1, 2, 5, 8, 10]
-- Change to be given:7
+- **Available coins:** [1, 2, 5, 8, 10]
+- **Change to be given:** 7
 
-1. Sort in descending order: [10, 8, 5, 2, 1]
-2. Iteration 1: Use one coin of denomination 5. Remaining change: 2.
-3. Iteration 2: Use one coin of denomination 2. Remaining change: 0.
-4. Result:Optimum combination is [5, 2].
+1. **Sort in descending order:** [10, 8, 5, 2, 1]
+2. **Iteration 1:** Use one coin of denomination 5. Remaining change: 2.
+3. **Iteration 2:** Use one coin of denomination 2. Remaining change: 0.
+4. **Result:** Optimum combination is [5, 2].
 
- Dynamic Programming:
+### Dynamic Programming:
 
 While the greedy approach often works for standard coin systems (like US coins), it may not always find the optimal solution for arbitrary coin denominations. Dynamic programming provides an alternative approach to find the optimal solution:
 
-1. Create a table to store subproblem solutions:
+1. **Create a table to store subproblem solutions:**
    - Initialize a table to store solutions to subproblems, where each entry represents the minimum number of coins needed to make change for a specific amount.
 
-2. Build the table bottom-up:
+2. **Build the table bottom-up:**
    - Start with the smallest subproblem (making change for 0) and gradually build up to the target amount.
    - For each amount, consider all available coins and calculate the minimum number of coins needed to make change.
 
-3. Utilize previously computed solutions:   - Utilize solutions to smaller subproblems to find solutions to larger subproblems.
+3. **Utilize previously computed solutions:**
+   - Utilize solutions to smaller subproblems to find solutions to larger subproblems.
    - The final entry in the table represents the minimum number of coins needed to make change for the target amount.
 
-Dynamic Programming Example:
+**Dynamic Programming Example:**
 
-- Available coins: [1, 2, 5, 8, 10]
-- Change to be given: 7
+- **Available coins:** [1, 2, 5, 8, 10]
+- **Change to be given:** 7
 
-1. Table :
+1. **Table Initialization:**
 
-Amount
-Coins Needed
-0
-0
-1
- ∞ 
-2
- ∞ 
-3
- ∞ 
-4
- ∞ 
-5
- ∞ 
-6
- ∞ 
-7
- ∞ 
+    | Amount | Coins Needed |
+    |--------|--------------|
+    | 0      | 0            |
+    | 1      | ∞            |
+    | 2      | ∞            |
+    | 3      | ∞            |
+    | 4      | ∞            |
+    | 5      | ∞            |
+    | 6      | ∞            |
+    | 7      | ∞            |
 
-
-
-
-
-2. Build the Table:
+2. **Build the Table:**
    - For each amount, consider all available coins and calculate the minimum number of coins needed.
 
-3. Final Table:
+3. **Final Table:**
 
-Amount
-Coins Needed
-0
-0
-1
-1
-2
-1
-3
-2
-4
-2
-5
-1
-6
-2
-7
-2
+    | Amount | Coins Needed |
+    |--------|--------------|
+    | 0      | 0            |
+    | 1      | 1            |
+    | 2      | 1            |
+    | 3      | 2            |
+    | 4      | 2            |
+    | 5      | 1            |
+    | 6      | 2            |
+    | 7      | 2            |
 
-
-
-
-4. Result:
+4. **Result:**
    - The final entry for amount 7 is 2, representing the minimum number of coins needed.
    - Optimum combination can be reconstructed from the table.
 
-Comparison:
+### Comparison:
 
-- Greedy Algorithm:
+- **Greedy Algorithm:**
   - Simple and easy to implement.
   - Might not always find the optimal solution for arbitrary coin systems.
 
-- Dynamic Programming:
+- **Dynamic Programming:**
   - Guarantees an optimal solution for any coin system.
   - Requires more computational resources and might be overkill for simple coin systems.
+
+### Summary:
+
+- Use the greedy algorithm for simplicity and efficiency in scenarios where it provides a satisfactory solution.
+- Resort to dynamic programming for a guaranteed optimal solution in more complex scenarios.
+
+In the context of the coin change problem, the choice between the greedy algorithm and dynamic programming depends on the specific requirements and characteristics of the coin system you are dealing with.
 
 
 ### f) What is dot product and cross product? Explain use cases of where dot product is used and cross product is used in a graphics environment. Add links to places where you studied this information and get back with the understanding.
