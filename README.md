@@ -45,7 +45,8 @@ public static String compressString(String s) {
 ### b) Linked List - The link shows a program to find the nth element of a linked list.
 https://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
 Find a way to find the kth to the last element of linked list ( assume length of linked list is not
-known)
+known)[INTECH ADDITIVE.pdf](https://github.com/Jagdish24-uc/INTECH-ADDITIVE/files/13542339/INTECH.ADDITIVE.pdf)
+
 
 ANS:
 Remembered  the basics of linked lists, including how nodes are connected and the concept of a head pointer. And  the two-pointer technique, where two pointers traverse the list at different speeds. And  how to move pointers through the linked list, especially when one pointer moves faster than the other.
