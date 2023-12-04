@@ -343,54 +343,55 @@ While the greedy approach often works for standard coin systems (like US coins),
   - Requires more computational resources and might be overkill for simple coin systems.
 
 ### f) What is dot product and cross product? Explain use cases of where dot product is used and cross product is used in a graphics environment. Add links to places where you studied this information and get back with the understanding.
+### Dot Product:
 
- Dot Product:
+#### Definition:
+The dot product (also known as the scalar product) of two vectors is a scalar quantity obtained by multiplying the corresponding components of the vectors and then summing those products. Mathematically, for two vectors \( \mathbf{A} = (a_1, a_2, a_3) \) and \( \mathbf{B} = (b_1, b_2, b_3) \), the dot product \( \mathbf{A} \cdot \mathbf{B} \) is given by:
 
-Definition:
-The dot product (also known as the scalar product) of two vectors is a scalar quantity obtained by multiplying the corresponding components of the vectors and then summing those products. Mathematically, for two vectors A=(a1, a2, a3) and B=(b1, b2, b3)the  dot product A.B  is given by:
+\[ \mathbf{A} \cdot \mathbf{B} = a_1 \cdot b_1 + a_2 \cdot b_2 + a_3 \cdot b_3 \]
 
-A.B = a1b1+a2b2+a3b3    
+#### Use Cases in Graphics:
+1. **Calculating Angle Between Vectors:**
+   - The dot product can be used to find the angle \( \theta \) between two vectors \( \mathbf{A} \) and \( \mathbf{B} \) using the formula \( \cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\| \cdot \|\mathbf{B}\|} \). This is useful in graphics for tasks like orientation calculations.
 
-
-
- Use Cases in Graphics:
-1. Calculating Angle Between Vectors:
-   - The dot product can be used to find the angle θ between two vectors A and B using the formula cos(θ)=A.B||A||.||B||. This is useful in graphics for tasks like orientation calculations.
-
-2. Projection of One Vector onto Another:
+2. **Projection of One Vector onto Another:**
    - The dot product is used to calculate the projection of one vector onto another. This is useful for shadow calculations, reflections, and transformations.
 
-3. Checking Orthogonality:
-   - Vectors A and B are orthogonal (perpendicular) if and only if  A.B= 0 . This property is employed in various geometric calculations.
+3. **Checking Orthogonality:**
+   - Vectors \( \mathbf{A} \) and \( \mathbf{B} \) are orthogonal (perpendicular) if and only if \( \mathbf{A} \cdot \mathbf{B} = 0 \). This property is employed in various geometric calculations.
 
-4. Work Done by a Force:
-   - In physics simulations, the dot product is used to calculate the work done by a force F acting on an object moving along a displacement d using the formula F.d.
+4. **Work Done by a Force:**
+   - In physics simulations, the dot product is used to calculate the work done by a force \( \mathbf{F} \) acting on an object moving along a displacement \( \mathbf{d} \) using the formula \( \text{Work} = \mathbf{F} \cdot \mathbf{d} \).
 
- Resources:
+#### Resources:
 - [Khan Academy - Dot Product and Scalar Projection](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length)
 - [Wolfram MathWorld - Dot Product](https://mathworld.wolfram.com/DotProduct.html)
 
+---
 
- Cross Product:
-The cross product (also known as the vector product) of two vectors is a vector quantity that is perpendicular to both of the original vectors. Mathematically, for two vectors =A=(a1, a2, a3) and B=(b1, b2, b3), the cross product A x B is given by:
+### Cross Product:
 
-A x B =   (a2b3-a3b2 , a3b1-a1b3 ,  a1b2-a2b1)   
+#### Definition:
+The cross product (also known as the vector product) of two vectors is a vector quantity that is perpendicular to both of the original vectors. Mathematically, for two vectors \( \mathbf{A} = (a_1, a_2, a_3) \) and \( \mathbf{B} = (b_1, b_2, b_3) \), the cross product \( \mathbf{A} \times \mathbf{B} \) is given by:
 
-Use Cases in Graphics:
-1. Calculating Normal Vectors:
-   The cross product is frequently used to find normal vectors to surfaces. For example, in 3D graphics, it's used to find the normal vector to a plane defined by two vectors.
+\[ \mathbf{A} \times \mathbf{B} = \left( a_2b_3 - a_3b_2, a_3b_1 - a_1b_3, a_1b_2 - a_2b_1 \right) \]
 
-2. Calculating Area of Parallelogram:
-   - The magnitude of the cross product of two vectors A and B is equal to the area of the parallelogram formed by A and B. This is useful in graphics for calculating surface areas.
+#### Use Cases in Graphics:
+1. **Calculating Normal Vectors:**
+   - The cross product is frequently used to find normal vectors to surfaces. For example, in 3D graphics, it's used to find the normal vector to a plane defined by two vectors.
 
-3. Determining Orientation:
-   - The direction of the cross product A x B can be used to determine the orientation of A relative to B, which is essential in graphics for tasks like determining clockwise or counterclockwise order.
+2. **Calculating Area of Parallelogram:**
+   - The magnitude of the cross product of two vectors \( \mathbf{A} \) and \( \mathbf{B} \) is equal to the area of the parallelogram formed by \( \mathbf{A} \) and \( \mathbf{B} \). This is useful in graphics for calculating surface areas.
 
-4. Calculating Torque:
-   - In physics simulations, the cross product is used to calculate torque τ = r x F , where r is the displacement vector from the axis of rotation to the point where the force F is applied.
+3. **Determining Orientation:**
+   - The direction of the cross product \( \mathbf{A} \times \mathbf{B} \) can be used to determine the orientation of \( \mathbf{A} \) relative to \( \mathbf{B} \), which is essential in graphics for tasks like determining clockwise or counterclockwise order.
 
-Resources:
+4. **Calculating Torque:**
+   - In physics simulations, the cross product is used to calculate torque (\( \tau = \mathbf{r} \times \mathbf{F} \)), where \( \mathbf{r} \) is the displacement vector from the axis of rotation to the point where the force \( \mathbf{F} \) is applied.
+
+#### Resources:
 - [Khan Academy - Cross Product](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/defining-the-cross-product)
+  
 
 ### g) Explain a piece of code that you wrote which you are proud of? If you have not written any code, please write your favorite subject in engineering studies. We can go deep into that subject.
 
