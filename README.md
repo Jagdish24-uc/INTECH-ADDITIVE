@@ -463,6 +463,7 @@ GOA:
     SETB P1.2
     SJMP LIGHT
 
+
 This part of the code controls the traffic light sequence, transitioning between red, yellow, and green lights with delays. The use of loops (DJNZ - Decrement and Jump if Not Zero) and subroutine calls (ACALL) for delays is a common technique in embedded programming.
 
 Delay Routine:
