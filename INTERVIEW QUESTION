@@ -1,4 +1,4 @@
-a) String compression
+### a) String compression
 Implement a method to perform string compression. E.g. ‘aabcccccaaa’ should be a2b1c5a3. The code to implement this is given in the link - https://www.educative.io/answers/string-compression-using-run-length-encoding
 
 Think about memory occupied and how it can be improved.
@@ -42,10 +42,11 @@ public static String compressString(String s) {
 
 
 
-b) Linked List - The link shows a program to find the nth element of a linked list.
+### b) Linked List - The link shows a program to find the nth element of a linked list.
 https://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
 Find a way to find the kth to the last element of linked list ( assume length of linked list is not
-known)
+known)[INTECH ADDITIVE.pdf](https://github.com/Jagdish24-uc/INTECH-ADDITIVE/files/13542339/INTECH.ADDITIVE.pdf)
+
 
 ANS:
 Remembered  the basics of linked lists, including how nodes are connected and the concept of a head pointer. And  the two-pointer technique, where two pointers traverse the list at different speeds. And  how to move pointers through the linked list, especially when one pointer moves faster than the other.
@@ -119,7 +120,7 @@ class LinkedList {
 
 
 
-c) Stack minimum- Details of stack data structure is available in
+### c) Stack minimum- Details of stack data structure is available in
 https://www.geeksforgeeks.org/stack-data-structure/
 Stack has functions of push and pop. Can you also add a function ‘min’ to the stack and it
 should also execute in O(1).
@@ -196,7 +197,7 @@ class MinStack {
     }
 }
 
-Bonus 1 –
+#### Bonus 1 –
 Explain one real world use case where stack is better used data structure than arrays.
 ANS:
 
@@ -208,7 +209,7 @@ Array: Arrays have a fixed size that needs to be defined in advance. If the arra
 
 
 
-d) Given an array of integers representing the elevation of a roof structure at
+### d) Given an array of integers representing the elevation of a roof structure at
 various positions, each position is separated by a unit length, Write a program
 to determine the amount of water that will be trapped on the roof after heavy
 rainfall
@@ -232,7 +233,7 @@ ANS:
 
 
 
-e) You are given a list of coin denominations that you can use to tender change to your customers. The goal is to find the most optimum way to tender the exact change to your customers, where "optimum" means using the least number of coins. For a given set of available coins and a specific amount of change to be given, provide a solution that minimizes the number of coins used.
+### e) You are given a list of coin denominations that you can use to tender change to your customers. The goal is to find the most optimum way to tender the exact change to your customers, where "optimum" means using the least number of coins. For a given set of available coins and a specific amount of change to be given, provide a solution that minimizes the number of coins used.
 
 Example:
 
@@ -252,167 +253,151 @@ Output:
 
 
 
- Greedy Algorithm:
+
+
+### Greedy Algorithm:
 
 A greedy algorithm is an algorithmic paradigm that follows the problem-solving heuristic of making the locally optimal choice at each stage with the hope of finding a global optimum. In the context of the coin change problem:
 
-1. Sort the coins in descending order:
+1. **Sort the coins in descending order:**
    - Start by sorting the available coins in descending order. This ensures that you always try to use the largest possible coin first.
 
-2. Iterate through the sorted coins:
+2. **Iterate through the sorted coins:**
    - Begin with the largest coin and continue iterating through the sorted coins.
-   - At each iteration, use as many of the current coin denominations as possible while still keeping the total less than or equal to the target amount.
+   - At each iteration, use as many of the current coin denomination as possible while still keeping the total less than or equal to the target amount.
 
-3. Repeat until the target amount is zero:
+3. **Repeat until the target amount is zero:**
    - Continue this process until the target amount becomes zero.
 
-Greedy Approach Example:
+**Greedy Approach Example:**
 
-- Available coins: [1, 2, 5, 8, 10]
-- Change to be given:7
+- **Available coins:** [1, 2, 5, 8, 10]
+- **Change to be given:** 7
 
-1. Sort in descending order: [10, 8, 5, 2, 1]
-2. Iteration 1: Use one coin of denomination 5. Remaining change: 2.
-3. Iteration 2: Use one coin of denomination 2. Remaining change: 0.
-4. Result:Optimum combination is [5, 2].
+1. **Sort in descending order:** [10, 8, 5, 2, 1]
+2. **Iteration 1:** Use one coin of denomination 5. Remaining change: 2.
+3. **Iteration 2:** Use one coin of denomination 2. Remaining change: 0.
+4. **Result:** Optimum combination is [5, 2].
 
- Dynamic Programming:
+### Dynamic Programming:
 
 While the greedy approach often works for standard coin systems (like US coins), it may not always find the optimal solution for arbitrary coin denominations. Dynamic programming provides an alternative approach to find the optimal solution:
 
-1. Create a table to store subproblem solutions:
+1. **Create a table to store subproblem solutions:**
    - Initialize a table to store solutions to subproblems, where each entry represents the minimum number of coins needed to make change for a specific amount.
 
-2. Build the table bottom-up:
+2. **Build the table bottom-up:**
    - Start with the smallest subproblem (making change for 0) and gradually build up to the target amount.
    - For each amount, consider all available coins and calculate the minimum number of coins needed to make change.
 
-3. Utilize previously computed solutions:   - Utilize solutions to smaller subproblems to find solutions to larger subproblems.
+3. **Utilize previously computed solutions:**
+   - Utilize solutions to smaller subproblems to find solutions to larger subproblems.
    - The final entry in the table represents the minimum number of coins needed to make change for the target amount.
 
-Dynamic Programming Example:
+**Dynamic Programming Example:**
 
-- Available coins: [1, 2, 5, 8, 10]
-- Change to be given: 7
+- **Available coins:** [1, 2, 5, 8, 10]
+- **Change to be given:** 7
 
-1. Table :
+1. **Table Initialization:**
 
-Amount
-Coins Needed
-0
-0
-1
- ∞ 
-2
- ∞ 
-3
- ∞ 
-4
- ∞ 
-5
- ∞ 
-6
- ∞ 
-7
- ∞ 
+    | Amount | Coins Needed |
+    |--------|--------------|
+    | 0      | 0            |
+    | 1      | ∞            |
+    | 2      | ∞            |
+    | 3      | ∞            |
+    | 4      | ∞            |
+    | 5      | ∞            |
+    | 6      | ∞            |
+    | 7      | ∞            |
 
-
-
-
-
-2. Build the Table:
+2. **Build the Table:**
    - For each amount, consider all available coins and calculate the minimum number of coins needed.
 
-3. Final Table:
+3. **Final Table:**
 
-Amount
-Coins Needed
-0
-0
-1
-1
-2
-1
-3
-2
-4
-2
-5
-1
-6
-2
-7
-2
+    | Amount | Coins Needed |
+    |--------|--------------|
+    | 0      | 0            |
+    | 1      | 1            |
+    | 2      | 1            |
+    | 3      | 2            |
+    | 4      | 2            |
+    | 5      | 1            |
+    | 6      | 2            |
+    | 7      | 2            |
 
-
-
-
-4. Result:
+4. **Result:**
    - The final entry for amount 7 is 2, representing the minimum number of coins needed.
    - Optimum combination can be reconstructed from the table.
 
-Comparison:
+### Comparison:
 
-- Greedy Algorithm:
+- **Greedy Algorithm:**
   - Simple and easy to implement.
   - Might not always find the optimal solution for arbitrary coin systems.
 
-- Dynamic Programming:
+- **Dynamic Programming:**
   - Guarantees an optimal solution for any coin system.
   - Requires more computational resources and might be overkill for simple coin systems.
 
+### f) What is dot product and cross product? Explain use cases of where dot product is used and cross product is used in a graphics environment. Add links to places where you studied this information and get back with the understanding.
+# Vector Operations in Graphics
 
-f) What is dot product and cross product? Explain use cases of where dot product is used and cross product is used in a graphics environment. Add links to places where you studied this information and get back with the understanding.
+## Dot Product
 
- Dot Product:
+### Definition:
+The dot product (also known as the scalar product) of two vectors is a scalar quantity obtained by multiplying the corresponding components of the vectors and then summing those products.
 
-Definition:
-The dot product (also known as the scalar product) of two vectors is a scalar quantity obtained by multiplying the corresponding components of the vectors and then summing those products. Mathematically, for two vectors A=(a1, a2, a3) and B=(b1, b2, b3)the  dot product A.B  is given by:
+Dot Product: A · B = a1 * b1 + a2 * b2 + a3 * b3
 
-A.B = a1b1+a2b2+a3b3    
+### Use Cases in Graphics:
+1. **Calculating Angle Between Vectors:**
+   - The dot product is used to find the angle theta between two vectors A and B.
 
+2. **Projection of One Vector onto Another:**
+   - Useful for shadow calculations, reflections, and transformations.
 
+3. **Checking Orthogonality:**
+   - Vectors A and B are orthogonal if A · B = 0.
 
- Use Cases in Graphics:
-1. Calculating Angle Between Vectors:
-   - The dot product can be used to find the angle θ between two vectors A and B using the formula cos(θ)=A.B||A||.||B||. This is useful in graphics for tasks like orientation calculations.
+4. **Work Done by a Force:**
+   - Used to calculate the work done by a force F along a displacement d.
 
-2. Projection of One Vector onto Another:
-   - The dot product is used to calculate the projection of one vector onto another. This is useful for shadow calculations, reflections, and transformations.
-
-3. Checking Orthogonality:
-   - Vectors A and B are orthogonal (perpendicular) if and only if  A.B= 0 . This property is employed in various geometric calculations.
-
-4. Work Done by a Force:
-   - In physics simulations, the dot product is used to calculate the work done by a force F acting on an object moving along a displacement d using the formula F.d.
-
- Resources:
+### Resources:
 - [Khan Academy - Dot Product and Scalar Projection](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length)
 - [Wolfram MathWorld - Dot Product](https://mathworld.wolfram.com/DotProduct.html)
 
+---
 
- Cross Product:
-The cross product (also known as the vector product) of two vectors is a vector quantity that is perpendicular to both of the original vectors. Mathematically, for two vectors =A=(a1, a2, a3) and B=(b1, b2, b3), the cross product A x B is given by:
+## Cross Product
 
-A x B =   (a2b3-a3b2 , a3b1-a1b3 ,  a1b2-a2b1)   
+### Definition:
+The cross product (also known as the vector product) of two vectors is a vector quantity perpendicular to both of the original vectors.
 
-Use Cases in Graphics:
-1. Calculating Normal Vectors:
-   The cross product is frequently used to find normal vectors to surfaces. For example, in 3D graphics, it's used to find the normal vector to a plane defined by two vectors.
+Cross Product: A × B = (a2b3 - a3b2, a3b1 - a1b3, a1b2 - a2b1)
 
-2. Calculating Area of Parallelogram:
-   - The magnitude of the cross product of two vectors A and B is equal to the area of the parallelogram formed by A and B. This is useful in graphics for calculating surface areas.
+### Use Cases in Graphics:
+1. **Calculating Normal Vectors:**
+   - Used to find normal vectors to surfaces.
 
-3. Determining Orientation:
-   - The direction of the cross product A x B can be used to determine the orientation of A relative to B, which is essential in graphics for tasks like determining clockwise or counterclockwise order.
+2. **Calculating Area of Parallelogram:**
+   - The magnitude of the cross product is equal to the area of the parallelogram formed by two vectors.
 
-4. Calculating Torque:
-   - In physics simulations, the cross product is used to calculate torque τ = r x F , where r is the displacement vector from the axis of rotation to the point where the force F is applied.
+3. **Determining Orientation:**
+   - The direction of the cross product is used to determine the orientation of vectors.
 
-Resources:
+4. **Calculating Torque:**
+   - Used to calculate torque in physics simulations.
+
+### Resources:
 - [Khan Academy - Cross Product](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/defining-the-cross-product)
 
-g) Explain a piece of code that you wrote which you are proud of? If you have not written any code, please write your favorite subject in engineering studies. We can go deep into that subject.
+
+  
+
+### g) Explain a piece of code that you wrote which you are proud of? If you have not written any code, please write your favorite subject in engineering studies. We can go deep into that subject.
 
 
 Implementation of the traffic light sequence, particularly how each color (red, yellow, green) is controlled with delays and loops. It involves controlling hardware like a microcontroller. Writing code for embedded systems often requires a good understanding of both software and hardware aspects.
@@ -462,6 +447,7 @@ GOA:
     SETB P1.2
     SJMP LIGHT
 
+
 This part of the code controls the traffic light sequence, transitioning between red, yellow, and green lights with delays. The use of loops (DJNZ - Decrement and Jump if Not Zero) and subroutine calls (ACALL) for delays is a common technique in embedded programming.
 
 Delay Routine:
@@ -486,55 +472,63 @@ TARGET:
 
 The delay routine is crucial for creating time delays in the traffic light sequence. It utilizes Timer 0 to generate precise delays, and the use of R6 and R0 as loop counters.
 
-h) Random crashes – you are given a source code to test and it randomly crashes and it never
+### h) Random crashes – you are given a source code to test and it randomly crashes and it never
 crashes in the same place ( you have attached a debugger and you find this). Explain what
 all you would suspect and how would you go about with isolating the cause.
 
 
-Here's a step-by-step approach to help you troubleshoot and identify the root cause of random crashes:
-Check for Memory Issues:
-Memory leaks: Use tools like Valgrind or AddressSanitizer to detect memory leaks in the code.
-Buffer overflows: Check for buffer overflows using tools like Valgrind or static analyzers.
-Concurrency Issues:
-Race conditions: Examine the code for potential race conditions, where multiple threads access shared resources without proper synchronization.
-Deadlocks: Check for deadlock situations where multiple threads are blocked waiting for each other.
-Exception Handling:
-Inspect how exceptions are handled in the code. Unhandled exceptions can lead to crashes.
-Ensure that all critical sections have proper exception handling.
-Input Validation:
-Verify that the code performs robust input validation to handle unexpected or malicious input.
-Check for null pointer dereferences and invalid memory accesses due to incorrect input.
-Dynamic Memory Allocation:
-Review dynamic memory allocation and deallocation in the code. Make sure memory is allocated and freed correctly.
-Watch for double-free or use-after-free scenarios.
-Logging and Debugging:
-Increase the level of logging in the code to capture more information about the state of the application before a crash.
-Utilize debugging tools like GDB or Visual Studio Debugger to analyze the crash dumps and stack traces.
-Code Reviews:
-Perform a thorough code review with an emphasis on error-prone areas.
-Involve colleagues or peers to get fresh perspectives and additional insights.
-Environment Issues:
-Check if the crashes are dependent on the environment (e.g., specific operating system, hardware, compiler version).
-Verify that all dependencies and libraries are up-to-date and compatible.
-Reproducibility:
-Attempt to reproduce the issue consistently. If you can reliably reproduce the crash, it becomes easier to isolate and fix the problem.
-Instrumentation:
-Add additional logging or instrumentation code to specific areas of the code to gather more information about the program's state during execution.
-Static Analysis Tools:
-Utilize static code analysis tools to identify potential issues without executing the code.
-Version Control:
-Check the version control system for recent changes. A recent code change might be introducing instability.
-Divide and Conquer:
-Temporarily comment out or isolate sections of the code to narrow down the area where the crash occurs. Gradually reintroduce code until the issue reappears.
-Documentation and Comments:
-Review the code's documentation and comments for any hints or insights into the intended behavior.
 
+Random crashes in software can be challenging to diagnose, but there are several common issues and debugging strategies you can employ to isolate the cause. Here's a step-by-step approach to help you troubleshoot and identify the root cause of random crashes:
 
+1. **Check for Memory Issues:**
+   - Memory leaks: Use tools like Valgrind or AddressSanitizer to detect memory leaks in the code.
+   - Buffer overflows: Check for buffer overflows using tools like Valgrind or static analyzers.
 
+2. **Concurrency Issues:**
+   - Race conditions: Examine the code for potential race conditions, where multiple threads access shared resources without proper synchronization.
+   - Deadlocks: Check for deadlock situations where multiple threads are blocked waiting for each other.
 
+3. **Exception Handling:**
+   - Inspect how exceptions are handled in the code. Unhandled exceptions can lead to crashes.
+   - Ensure that all critical sections have proper exception handling.
 
+4. **Input Validation:**
+   - Verify that the code performs robust input validation to handle unexpected or malicious input.
+   - Check for null pointer dereferences and invalid memory accesses due to incorrect input.
 
+5. **Dynamic Memory Allocation:**
+   - Review dynamic memory allocation and deallocation in the code. Make sure memory is allocated and freed correctly.
+   - Watch for double-free or use-after-free scenarios.
 
+6. **Logging and Debugging:**
+   - Increase the level of logging in the code to capture more information about the state of the application before a crash.
+   - Utilize debugging tools like GDB or Visual Studio Debugger to analyze the crash dumps and stack traces.
+
+7. **Code Reviews:**
+   - Perform a thorough code review with an emphasis on error-prone areas.
+   - Involve colleagues or peers to get fresh perspectives and additional insights.
+
+8. **Environment Issues:**
+   - Check if the crashes are dependent on the environment (e.g., specific operating system, hardware, compiler version).
+   - Verify that all dependencies and libraries are up-to-date and compatible.
+
+9. **Reproducibility:**
+   - Attempt to reproduce the issue consistently. If you can reliably reproduce the crash, it becomes easier to isolate and fix the problem.
+
+10. **Instrumentation:**
+    - Add additional logging or instrumentation code to specific areas of the code to gather more information about the program's state during execution.
+
+11. **Static Analysis Tools:**
+    - Utilize static code analysis tools to identify potential issues without executing the code.
+
+12. **Version Control:**
+    - Check the version control system for recent changes. A recent code change might be introducing the instability.
+
+13. **Divide and Conquer:**
+    - Temporarily comment out or isolate sections of the code to narrow down the area where the crash occurs. Gradually reintroduce code until the issue reappears.
+
+14. **Documentation and Comments:**
+    - Review the code's documentation and comments for any hints or insights into the intended behavior.
 
 
 
