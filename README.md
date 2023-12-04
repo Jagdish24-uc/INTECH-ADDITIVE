@@ -343,8 +343,6 @@ While the greedy approach often works for standard coin systems (like US coins),
   - Requires more computational resources and might be overkill for simple coin systems.
 
 ### f) What is dot product and cross product? Explain use cases of where dot product is used and cross product is used in a graphics environment. Add links to places where you studied this information and get back with the understanding.
-### Dot Product:
-
 # Vector Operations in Graphics
 
 ## Dot Product
@@ -352,20 +350,20 @@ While the greedy approach often works for standard coin systems (like US coins),
 ### Definition:
 The dot product (also known as the scalar product) of two vectors is a scalar quantity obtained by multiplying the corresponding components of the vectors and then summing those products.
 
-\[ \mathbf{A} \cdot \mathbf{B} = a_1 \cdot b_1 + a_2 \cdot b_2 + a_3 \cdot b_3 \]
+Dot Product: A · B = a1 * b1 + a2 * b2 + a3 * b3
 
 ### Use Cases in Graphics:
 1. **Calculating Angle Between Vectors:**
-   - The dot product is used to find the angle \( \theta \) between two vectors \( \mathbf{A} \) and \( \mathbf{B} \).
+   - The dot product is used to find the angle theta between two vectors A and B.
 
 2. **Projection of One Vector onto Another:**
    - Useful for shadow calculations, reflections, and transformations.
 
 3. **Checking Orthogonality:**
-   - Vectors \( \mathbf{A} \) and \( \mathbf{B} \) are orthogonal if \( \mathbf{A} \cdot \mathbf{B} = 0 \).
+   - Vectors A and B are orthogonal if A · B = 0.
 
 4. **Work Done by a Force:**
-   - Used to calculate the work done by a force \( \mathbf{F} \) along a displacement \( \mathbf{d} \).
+   - Used to calculate the work done by a force F along a displacement d.
 
 ### Resources:
 - [Khan Academy - Dot Product and Scalar Projection](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length)
@@ -378,7 +376,7 @@ The dot product (also known as the scalar product) of two vectors is a scalar qu
 ### Definition:
 The cross product (also known as the vector product) of two vectors is a vector quantity perpendicular to both of the original vectors.
 
-\[ \mathbf{A} \times \mathbf{B} = \left( a_2b_3 - a_3b_2, a_3b_1 - a_1b_3, a_1b_2 - a_2b_1 \right) \]
+Cross Product: A × B = (a2b3 - a3b2, a3b1 - a1b3, a1b2 - a2b1)
 
 ### Use Cases in Graphics:
 1. **Calculating Normal Vectors:**
@@ -395,6 +393,7 @@ The cross product (also known as the vector product) of two vectors is a vector 
 
 ### Resources:
 - [Khan Academy - Cross Product](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/defining-the-cross-product)
+
 
   
 
