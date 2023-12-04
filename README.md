@@ -1,0 +1,554 @@
+### a) String compression
+Implement a method to perform string compression. E.g. ‘aabcccccaaa’ should be a2b1c5a3. The code to implement this is given in the link - https://www.educative.io/answers/string-compression-using-run-length-encoding
+
+Think about memory occupied and how it can be improved.
+
+Ans:
+
+Remembered how to iterate over characters in a string and manipulate them based on certain conditions. and StringBuilder class in Java and how it can be used to efficiently build and modify strings.and remembered how to use comparison operators (==, <, >, etc.) to compare characters and make decisions based on their equality.
+
+public static String compressString(String s) {
+    // Initialize a StringBuilder to efficiently build the compressed string.
+    StringBuilder compressed = new StringBuilder();
+
+    // Initialize a count variable to track the number of consecutive repeated characters.
+    int count = 1;
+
+    // Iterate through the characters of the input string, starting from the second character.
+    for (int i = 1; i < s.length(); i++) {
+        // Check if the current character is equal to the previous character.
+        if (s.charAt(i) == s.charAt(i - 1)) {
+            // If equal, increment the count.
+            count++;
+        } else {
+            // If not equal, append the previous character and its count to the compressed string.
+            compressed.append(s.charAt(i - 1)).append(count);
+
+            // Reset the count for the new character.
+            count = 1;
+        }
+    }
+
+    // Append the last character of the string and its count to the compressed string.
+    compressed.append(s.charAt(s.length() - 1)).append(count);
+
+    // Convert the StringBuilder to a String.
+    String result = compressed.toString();
+
+    // Return the compressed string if it is shorter than the original, otherwise return the original string.
+    return result.length() < s.length() ? result : s;
+}
+
+
+
+
+b) Linked List - The link shows a program to find the nth element of a linked list.
+https://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
+Find a way to find the kth to the last element of linked list ( assume length of linked list is not
+known)
+
+ANS:
+Remembered  the basics of linked lists, including how nodes are connected and the concept of a head pointer. And  the two-pointer technique, where two pointers traverse the list at different speeds. And  how to move pointers through the linked list, especially when one pointer moves faster than the other.
+Understanding the structure of a linked list node and how to access its data and next pointer.
+
+class LinkedList {
+    Node head;
+
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int d) {
+            data = d;
+            next = null;
+        }
+    }
+
+    // Function to find the kth to the last element of the linked list
+    void printKthToLast(int k) {
+        if (head == null || k <= 0) {
+            System.out.println("Invalid input");
+            return;
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        // Move the fast pointer k nodes ahead
+        for (int i = 0; i < k; i++) {
+            if (fast == null) {
+                System.out.println("The linked list is shorter than " + k + " nodes.");
+                return;
+            }
+            fast = fast.next;
+        }
+
+        // Move both pointers one node at a time until the fast pointer reaches the end
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        // At this point, the slow pointer is at the kth to the last element
+        System.out.println("The " + k + "th to the last element is: " + slow.data);
+    }
+
+    // Inserts a new Node at the front of the list
+    public void push(int new_data) {
+        Node new_node = new Node(new_data);
+        new_node.next = head;
+        head = new_node;
+    }
+
+    // Driver's code
+    public static void main(String[] args) {
+        LinkedList llist = new LinkedList();
+        llist.push(10);
+        llist.push(20);
+        llist.push(30);
+        llist.push(40);
+        llist.push(50);
+
+        // Function call with k = 3
+        llist.printKthToLast(3);
+    }
+}
+
+
+
+
+
+
+c) Stack minimum- Details of stack data structure is available in
+https://www.geeksforgeeks.org/stack-data-structure/
+Stack has functions of push and pop. Can you also add a function ‘min’ to the stack and it
+should also execute in O(1).
+If you are not aware of O(1), refer to some videos online. E.g.
+https://en.wikipedia.org/wiki/Big_O_notation
+
+Ans:
+The min function in this implementation takes constant time, O(1), because it retrieves the minimum element directly from the minStack. The crucial aspect that allows this constant-time retrieval is that the minStack keeps track of the minimum element at each state of the mainStack.
+
+Remembered  how a stack works, both in terms of its operations and its Last-In-First-Out  property.
+ Ensure that push, pop, and min operations are designed to execute in constant time. This requires careful management of the auxiliary stack during push and pop operations.
+ Understand how to compare elements in the stack to determine the minimum.
+ Consider how to handle scenarios where the stack is empty or when attempting to find the minimum in an empty stack.
+ Recognize the importance of maintaining O(1) time complexity for the min function and how it influences the design of push and pop operations.
+
+import java.util.Stack;
+
+class MinStack {
+    private Stack<Integer> mainStack;
+    private Stack<Integer> minStack;
+
+    // Constructor
+    public MinStack() {
+        mainStack = new Stack<>();
+        minStack = new Stack<>();
+    }
+
+    // Push operation
+    public void push(int value) {
+        mainStack.push(value);
+
+        // If the minStack is empty or the new value is smaller than or equal to the current minimum
+        if (minStack.isEmpty() || value <= minStack.peek()) {
+            minStack.push(value);
+        }
+    }
+
+    // Pop operation
+    public void pop() {
+        // If the main stack is not empty
+        if (!mainStack.isEmpty()) {
+            // If the value being popped is the current minimum, pop from the minStack as well
+            if (mainStack.peek().equals(minStack.peek())) {
+                minStack.pop();
+            }
+            mainStack.pop();
+        }
+    }
+
+    // Min operation to get the minimum element in the stack
+    public int min() {
+        // If the minStack is not empty, return the current minimum
+        if (!minStack.isEmpty()) {
+            return minStack.peek();
+        } else {
+            // If the stack is empty, throw an exception or return a sentinel value
+            throw new IllegalStateException("Stack is empty");
+        }
+    }
+
+    public static void main(String[] args) {
+        MinStack stack = new MinStack();
+
+        stack.push(3);
+        stack.push(5);
+        System.out.println("Minimum: " + stack.min()); // Output: 3
+
+        stack.push(2);
+        stack.push(1);
+        System.out.println("Minimum: " + stack.min()); // Output: 1
+
+        stack.pop();
+        System.out.println("Minimum: " + stack.min()); // Output: 2
+    }
+}
+
+Bonus 1 –
+Explain one real world use case where stack is better used data structure than arrays.
+ANS:
+
+Stack of Plates: The number of plates in a cafe can vary dynamically based on customer demand. As more customers arrive, plates are added to the stack, and as plates are used and returned, they are taken off the top. This dynamic nature mirrors the flexibility of a stack data structure.
+
+Array: Arrays have a fixed size that needs to be defined in advance. If the array is too small to accommodate all plates, it may lead to inefficiencies or require resizing. If it's too large, it could waste memory.
+
+
+
+
+
+d) Given an array of integers representing the elevation of a roof structure at
+various positions, each position is separated by a unit length, Write a program
+to determine the amount of water that will be trapped on the roof after heavy
+rainfall
+Example:
+input : [2 1 3 0 1 2 3]
+Ans : 7 units of water will be trapped
+
+Go through the above code for the solution.
+The next phase is that the values are now not discrete but analog. E.g. I give an equation of function that is bounded, can you predict how many units of water gets trapped.
+
+ANS:
+
+
+
+
+
+
+
+
+
+
+
+
+e) You are given a list of coin denominations that you can use to tender change to your customers. The goal is to find the most optimum way to tender the exact change to your customers, where "optimum" means using the least number of coins. For a given set of available coins and a specific amount of change to be given, provide a solution that minimizes the number of coins used.
+
+Example:
+
+Input:
+- Available coins: [1, 2, 5, 8, 10]
+- Change to be given: 7
+
+Output:
+- Optimum combination: [2, 5]
+
+ Explanation:
+
+- You have available coins with denominations [1, 2, 5, 8, 10].
+- You need to provide change for the amount 7.
+- The most optimum way is to use coins with denominations 2 and 5, totaling 7.
+- This combination uses the least number of coins.
+
+
+
+ Greedy Algorithm:
+
+A greedy algorithm is an algorithmic paradigm that follows the problem-solving heuristic of making the locally optimal choice at each stage with the hope of finding a global optimum. In the context of the coin change problem:
+
+1. Sort the coins in descending order:
+   - Start by sorting the available coins in descending order. This ensures that you always try to use the largest possible coin first.
+
+2. Iterate through the sorted coins:
+   - Begin with the largest coin and continue iterating through the sorted coins.
+   - At each iteration, use as many of the current coin denominations as possible while still keeping the total less than or equal to the target amount.
+
+3. Repeat until the target amount is zero:
+   - Continue this process until the target amount becomes zero.
+
+Greedy Approach Example:
+
+- Available coins: [1, 2, 5, 8, 10]
+- Change to be given:7
+
+1. Sort in descending order: [10, 8, 5, 2, 1]
+2. Iteration 1: Use one coin of denomination 5. Remaining change: 2.
+3. Iteration 2: Use one coin of denomination 2. Remaining change: 0.
+4. Result:Optimum combination is [5, 2].
+
+ Dynamic Programming:
+
+While the greedy approach often works for standard coin systems (like US coins), it may not always find the optimal solution for arbitrary coin denominations. Dynamic programming provides an alternative approach to find the optimal solution:
+
+1. Create a table to store subproblem solutions:
+   - Initialize a table to store solutions to subproblems, where each entry represents the minimum number of coins needed to make change for a specific amount.
+
+2. Build the table bottom-up:
+   - Start with the smallest subproblem (making change for 0) and gradually build up to the target amount.
+   - For each amount, consider all available coins and calculate the minimum number of coins needed to make change.
+
+3. Utilize previously computed solutions:   - Utilize solutions to smaller subproblems to find solutions to larger subproblems.
+   - The final entry in the table represents the minimum number of coins needed to make change for the target amount.
+
+Dynamic Programming Example:
+
+- Available coins: [1, 2, 5, 8, 10]
+- Change to be given: 7
+
+1. Table :
+
+Amount
+Coins Needed
+0
+0
+1
+ ∞ 
+2
+ ∞ 
+3
+ ∞ 
+4
+ ∞ 
+5
+ ∞ 
+6
+ ∞ 
+7
+ ∞ 
+
+
+
+
+
+2. Build the Table:
+   - For each amount, consider all available coins and calculate the minimum number of coins needed.
+
+3. Final Table:
+
+Amount
+Coins Needed
+0
+0
+1
+1
+2
+1
+3
+2
+4
+2
+5
+1
+6
+2
+7
+2
+
+
+
+
+4. Result:
+   - The final entry for amount 7 is 2, representing the minimum number of coins needed.
+   - Optimum combination can be reconstructed from the table.
+
+Comparison:
+
+- Greedy Algorithm:
+  - Simple and easy to implement.
+  - Might not always find the optimal solution for arbitrary coin systems.
+
+- Dynamic Programming:
+  - Guarantees an optimal solution for any coin system.
+  - Requires more computational resources and might be overkill for simple coin systems.
+
+
+f) What is dot product and cross product? Explain use cases of where dot product is used and cross product is used in a graphics environment. Add links to places where you studied this information and get back with the understanding.
+
+ Dot Product:
+
+Definition:
+The dot product (also known as the scalar product) of two vectors is a scalar quantity obtained by multiplying the corresponding components of the vectors and then summing those products. Mathematically, for two vectors A=(a1, a2, a3) and B=(b1, b2, b3)the  dot product A.B  is given by:
+
+A.B = a1b1+a2b2+a3b3    
+
+
+
+ Use Cases in Graphics:
+1. Calculating Angle Between Vectors:
+   - The dot product can be used to find the angle θ between two vectors A and B using the formula cos(θ)=A.B||A||.||B||. This is useful in graphics for tasks like orientation calculations.
+
+2. Projection of One Vector onto Another:
+   - The dot product is used to calculate the projection of one vector onto another. This is useful for shadow calculations, reflections, and transformations.
+
+3. Checking Orthogonality:
+   - Vectors A and B are orthogonal (perpendicular) if and only if  A.B= 0 . This property is employed in various geometric calculations.
+
+4. Work Done by a Force:
+   - In physics simulations, the dot product is used to calculate the work done by a force F acting on an object moving along a displacement d using the formula F.d.
+
+ Resources:
+- [Khan Academy - Dot Product and Scalar Projection](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length)
+- [Wolfram MathWorld - Dot Product](https://mathworld.wolfram.com/DotProduct.html)
+
+
+ Cross Product:
+The cross product (also known as the vector product) of two vectors is a vector quantity that is perpendicular to both of the original vectors. Mathematically, for two vectors =A=(a1, a2, a3) and B=(b1, b2, b3), the cross product A x B is given by:
+
+A x B =   (a2b3-a3b2 , a3b1-a1b3 ,  a1b2-a2b1)   
+
+Use Cases in Graphics:
+1. Calculating Normal Vectors:
+   The cross product is frequently used to find normal vectors to surfaces. For example, in 3D graphics, it's used to find the normal vector to a plane defined by two vectors.
+
+2. Calculating Area of Parallelogram:
+   - The magnitude of the cross product of two vectors A and B is equal to the area of the parallelogram formed by A and B. This is useful in graphics for calculating surface areas.
+
+3. Determining Orientation:
+   - The direction of the cross product A x B can be used to determine the orientation of A relative to B, which is essential in graphics for tasks like determining clockwise or counterclockwise order.
+
+4. Calculating Torque:
+   - In physics simulations, the cross product is used to calculate torque τ = r x F , where r is the displacement vector from the axis of rotation to the point where the force F is applied.
+
+Resources:
+- [Khan Academy - Cross Product](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/defining-the-cross-product)
+
+g) Explain a piece of code that you wrote which you are proud of? If you have not written any code, please write your favorite subject in engineering studies. We can go deep into that subject.
+
+
+Implementation of the traffic light sequence, particularly how each color (red, yellow, green) is controlled with delays and loops. It involves controlling hardware like a microcontroller. Writing code for embedded systems often requires a good understanding of both software and hardware aspects.
+
+Traffic Light Sequence:
+LIGHT:
+    MOV P1, #00H
+    SETB P1.0
+    SETB P1.1
+    SETB P1.2
+    SETB P1.3
+    SETB P1.4
+    SETB P1.5
+    SETB P1.6
+    SETB P1.7
+
+RED:
+    MOV R5, #0CH
+    CLR P1.6
+GOR:
+    ACALL DELAY_RTN
+    DJNZ R5, GOR
+    SETB P1.6
+
+YELLOW:
+    MOV R4, #03H
+    CLR P1.4
+GOY:
+    ACALL DELAY_RTN
+    DJNZ R4, GOY
+    SETB P1.4
+
+GREEN:
+    MOV R3, #0CH
+    CLR P1.5
+GOG:
+    ACALL DELAY_RTN
+    DJNZ R3, GOG
+    SETB P1.5
+
+ADV_GR:
+    MOV R2, #02H
+    CLR P1.2
+GOA:
+    ACALL DELAY_RTN
+    DJNZ R2, GOA
+    SETB P1.2
+    SJMP LIGHT
+
+This part of the code controls the traffic light sequence, transitioning between red, yellow, and green lights with delays. The use of loops (DJNZ - Decrement and Jump if Not Zero) and subroutine calls (ACALL) for delays is a common technique in embedded programming.
+
+Delay Routine:
+DELAY_RTN:
+    MOV R0, #02
+
+DELAY_R:
+    MOV R6, #250
+
+CONT:
+    MOV TL0, #0FFH
+    MOV TH0, #0DBH
+    SETB TR0
+    SETB TF0
+TARGET:
+    JNB TF0, TARGET
+    CLR TR0
+    CLR TF0
+    DJNZ R6, CONT
+    DJNZ R0, DELAY_R
+    RET
+
+The delay routine is crucial for creating time delays in the traffic light sequence. It utilizes Timer 0 to generate precise delays, and the use of R6 and R0 as loop counters.
+
+h) Random crashes – you are given a source code to test and it randomly crashes and it never
+crashes in the same place ( you have attached a debugger and you find this). Explain what
+all you would suspect and how would you go about with isolating the cause.
+
+
+Here's a step-by-step approach to help you troubleshoot and identify the root cause of random crashes:
+Check for Memory Issues:
+Memory leaks: Use tools like Valgrind or AddressSanitizer to detect memory leaks in the code.
+Buffer overflows: Check for buffer overflows using tools like Valgrind or static analyzers.
+Concurrency Issues:
+Race conditions: Examine the code for potential race conditions, where multiple threads access shared resources without proper synchronization.
+Deadlocks: Check for deadlock situations where multiple threads are blocked waiting for each other.
+Exception Handling:
+Inspect how exceptions are handled in the code. Unhandled exceptions can lead to crashes.
+Ensure that all critical sections have proper exception handling.
+Input Validation:
+Verify that the code performs robust input validation to handle unexpected or malicious input.
+Check for null pointer dereferences and invalid memory accesses due to incorrect input.
+Dynamic Memory Allocation:
+Review dynamic memory allocation and deallocation in the code. Make sure memory is allocated and freed correctly.
+Watch for double-free or use-after-free scenarios.
+Logging and Debugging:
+Increase the level of logging in the code to capture more information about the state of the application before a crash.
+Utilize debugging tools like GDB or Visual Studio Debugger to analyze the crash dumps and stack traces.
+Code Reviews:
+Perform a thorough code review with an emphasis on error-prone areas.
+Involve colleagues or peers to get fresh perspectives and additional insights.
+Environment Issues:
+Check if the crashes are dependent on the environment (e.g., specific operating system, hardware, compiler version).
+Verify that all dependencies and libraries are up-to-date and compatible.
+Reproducibility:
+Attempt to reproduce the issue consistently. If you can reliably reproduce the crash, it becomes easier to isolate and fix the problem.
+Instrumentation:
+Add additional logging or instrumentation code to specific areas of the code to gather more information about the program's state during execution.
+Static Analysis Tools:
+Utilize static code analysis tools to identify potential issues without executing the code.
+Version Control:
+Check the version control system for recent changes. A recent code change might be introducing instability.
+Divide and Conquer:
+Temporarily comment out or isolate sections of the code to narrow down the area where the crash occurs. Gradually reintroduce code until the issue reappears.
+Documentation and Comments:
+Review the code's documentation and comments for any hints or insights into the intended behavior.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
