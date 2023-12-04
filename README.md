@@ -42,7 +42,7 @@ public static String compressString(String s) {
 
 
 
-b) Linked List - The link shows a program to find the nth element of a linked list.
+### b) Linked List - The link shows a program to find the nth element of a linked list.
 https://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
 Find a way to find the kth to the last element of linked list ( assume length of linked list is not
 known)
